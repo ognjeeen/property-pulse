@@ -47,7 +47,7 @@ const PropertyCard = ({ property }) => {
           </p>
           <p>
             <FaBath className="inline mr-2" />
-            <span className="md:hidden lg:inline">Baths</span>
+            {property.baths} <span className="md:hidden lg:inline">Baths</span>
           </p>
           <p>
             <FaRulerCombined className="inline mr-2" />
