@@ -1,14 +1,16 @@
 'use client';
-import { useParams } from 'next/navigation';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import { useParams } from 'next/navigation';
 import { fetchProperty } from '@/utils/request';
 import PropertyHeaderImage from '@/components/PropertyHeaderImage';
-import Link from 'next/link';
 import PropertyDetails from '@/components/PropertyDetails';
+import Spinner from '@/components/Spinner';
 import { FaArrowLeft } from 'react-icons/fa';
 
 const PropertyPage = () => {
   const { id } = useParams();
+
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -24,6 +26,7 @@ const PropertyPage = () => {
         setLoading(false);
       }
     };
+
     if (property === null) {
       fetchPropertyData();
     }
@@ -39,24 +42,25 @@ const PropertyPage = () => {
 
   return (
     <>
+      {loading && <Spinner loading={loading} />}
       {!loading && property && (
         <>
           <PropertyHeaderImage image={property.images[0]} />
           <section>
             <div className="container m-auto py-6 px-6">
               <Link
-                href={'/properties'}
+                href="/properties"
                 className="text-blue-500 hover:text-blue-600 flex items-center"
               >
                 <FaArrowLeft className="mr-2" /> Back to Properties
               </Link>
             </div>
           </section>
-          <PropertyDetails property={property} />
+
           <section className="bg-blue-50">
             <div className="container m-auto py-10 px-6">
               <div className="grid grid-cols-1 md:grid-cols-70/30 w-full gap-6">
-                {/* <!-- Sidebar --> */}
+                <PropertyDetails property={property} />
                 <aside className="space-y-4">
                   <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold w-full py-2 px-4 rounded-full flex items-center justify-center">
                     <i className="fas fa-bookmark mr-2"></i> Bookmark Property
@@ -148,5 +152,4 @@ const PropertyPage = () => {
     </>
   );
 };
-
 export default PropertyPage;
