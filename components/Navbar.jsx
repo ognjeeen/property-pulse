@@ -9,10 +9,12 @@ import { FaGoogle } from 'react-icons/fa';
 import { signIn, signOut, useSession, getProviders } from 'next-auth/react';
 
 const Navbar = () => {
-  const { data: session } = useSession;
+  const { data: session } = useSession();
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
   const [providers, setProviders] = useState(null);
+
   const pathname = usePathname();
 
   useEffect(() => {
@@ -243,6 +245,7 @@ const Navbar = () => {
                 Add Property
               </Link>
             )}
+
             {!session &&
               providers &&
               Object.values(providers).map((provider, index) => (
