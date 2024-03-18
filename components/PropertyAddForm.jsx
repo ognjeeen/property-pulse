@@ -55,6 +55,7 @@ const PropertyAddForm = () => {
       }));
     }
   };
+
   const handleAmenitiesChange = (e) => {
     const { value, checked } = e.target;
 
@@ -100,7 +101,11 @@ const PropertyAddForm = () => {
 
   return (
     mounted && (
-      <form>
+      <form
+        action="/api/properties"
+        method="POST"
+        encType="multipart/form-data"
+      >
         <h2 className="text-3xl text-center font-semibold mb-6">
           Add Property
         </h2>
@@ -439,7 +444,7 @@ const PropertyAddForm = () => {
                 name="amenities"
                 value="Coffee Maker"
                 className="mr-2"
-                checked={fields.amenities.includes('Coffe Maker')}
+                checked={fields.amenities.includes('Coffee Maker')}
                 onChange={handleAmenitiesChange}
               />
               <label htmlFor="amenity_coffee_maker">Coffee Maker</label>
@@ -504,7 +509,7 @@ const PropertyAddForm = () => {
           <input
             type="text"
             id="seller_name"
-            name="seller_info.name."
+            name="seller_info.name"
             className="border rounded w-full py-2 px-3"
             placeholder="Name"
             value={fields.seller_info.name}
@@ -562,6 +567,7 @@ const PropertyAddForm = () => {
             accept="image/*"
             multiple
             onChange={handleImageChange}
+            required
           />
         </div>
 
