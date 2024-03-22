@@ -54,6 +54,7 @@ export const PUT = async (request, { params }) => {
   try {
     await connectDB();
 
+    // Get session user (contains sessionUser and session.userId)
     const sessionUser = await getSessionUser();
     if (!sessionUser || !sessionUser.userId) {
       return new Response('User ID is required', { status: 401 });

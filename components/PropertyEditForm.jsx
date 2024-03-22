@@ -41,7 +41,7 @@ const PropertyEditForm = () => {
   useEffect(() => {
     setMounted(true);
 
-    // Fetch property data for form
+    // Fetch property data for form using fetchProperty function from request.js (single property fetch)
     const fetchPropertyData = async () => {
       try {
         const propertyData = await fetchProperty(id);
@@ -89,6 +89,7 @@ const PropertyEditForm = () => {
     }
   };
 
+  // Function for storing Amenities (checkboxes)
   const handleAmenitiesChange = (e) => {
     const { value, checked } = e.target;
 
@@ -114,6 +115,7 @@ const PropertyEditForm = () => {
     }));
   };
 
+  // Function for submiting edited property
   const handleSubmit = async (e) => {
     e.preventDefault();
 
