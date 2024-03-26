@@ -1,8 +1,10 @@
 'use client';
 import { useState } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const PropertyContactForm = ({ property }) => {
+  // Creating states for information from contact form
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -12,6 +14,7 @@ const PropertyContactForm = ({ property }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Creating a data object for message functionality using data we entered throught contact form (using state above)
     const data = {
       name,
       email,
@@ -21,8 +24,35 @@ const PropertyContactForm = ({ property }) => {
       property: property._id,
     };
 
-    console.log(data);
-    setWasSubmitted(true);
+    try {
+      // POST method where body is data object created above with contact form information
+      const res = await fetch('/api/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      // If 400 status -> You can't send messages to your self
+      // If 401 status -> You must be logged in to send a message
+      if (res.status === 200) {
+        toast.success('Message sent successfully');
+        setWasSubmitted(true);
+      } else if (res.status === 400 || res.status === 401) {
+        toast.error(data.message);
+      } else {
+        toast.error('Error sending form');
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('Error sending form');
+    } finally {
+      setName('');
+      setEmail('');
+      setPhone('');
+      setMessage('');
+    }
   };
 
   return (
