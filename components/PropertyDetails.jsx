@@ -9,18 +9,6 @@ import {
 } from 'react-icons/fa';
 
 const PropertyDetails = ({ property }) => {
-  const getRateDisplay = () => {
-    const { rates } = property;
-
-    if (rates.monthly) {
-      return `${rates.monthly.toLocaleString()}/mo`;
-    } else if (rates.weekly) {
-      return `${rates.weekly.toLocaleString()}/wk`;
-    } else {
-      return `${rates.nightly.toLocaleString()}/night`;
-    }
-  };
-
   return (
     <main>
       <div className="bg-white p-6 rounded-lg shadow-md text-center md:text-left">
