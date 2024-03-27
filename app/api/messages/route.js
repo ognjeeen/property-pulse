@@ -19,13 +19,13 @@ export const GET = async () => {
 
     const { userId } = sessionUser;
 
-    // Finding message thath matches recipient id
+    // Finding message that matches recipient id
     // Populate that object with sender name and property title
     const messages = await Message.find({
       recipient: userId,
     })
-      .populate('sender', 'name')
-      .populate('property', 'title');
+      .populate('sender', 'username')
+      .populate('property', 'name');
 
     return new Response(JSON.stringify(messages), { status: 200 });
   } catch (error) {
