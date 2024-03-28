@@ -24,7 +24,7 @@ const Messages = () => {
     };
 
     getMessages();
-  });
+  }, []);
 
   return (
     <>
