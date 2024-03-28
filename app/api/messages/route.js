@@ -21,11 +21,25 @@ export const GET = async () => {
 
     // Finding message that matches recipient id
     // Populate that object with sender name and property title
-    const messages = await Message.find({
+    const readMessages = await Message.find({
       recipient: userId,
+      read: true,
     })
+      // Sort read messages in asc order
+      .sort({ createdAt: -1 })
       .populate('sender', 'username')
       .populate('property', 'name');
+
+    const unreadMessages = await Message.find({
+      recipient: userId,
+      read: false,
+    })
+      // Sort read messages in asc order
+      .sort({ createdAt: -1 })
+      .populate('sender', 'username')
+      .populate('property', 'name');
+
+    const messages = [...unreadMessages, ...readMessages];
 
     return new Response(JSON.stringify(messages), { status: 200 });
   } catch (error) {
