@@ -11,7 +11,7 @@ export const GET = async (request) => {
     // Pagination functionality
     // First we read from URL on what page we are(page) and how much properties we want to display on that page(pageSize)
     const page = request.nextUrl.searchParams.get('page') || 1;
-    const pageSize = request.nextUrl.searchParams.get('pageSize') || 3;
+    const pageSize = request.nextUrl.searchParams.get('pageSize') || 6;
 
     // This functionality is for skipping page (for example from 1 page to 3 page)
     const skip = (page - 1) * pageSize;
