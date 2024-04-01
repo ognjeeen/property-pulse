@@ -2,43 +2,37 @@
 import { useState, useEffect } from 'react';
 import PropertyCard from '@/components/PropertyCard';
 import Spinner from '@/components/Spinner';
-import { toast } from 'react-toastify';
 
-const SavedPropertiesPage = () => {
+const Properties = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetching saved properties
   useEffect(() => {
-    const fetchSavedProperties = async () => {
+    const fetchProperties = async () => {
       try {
-        const res = await fetch(`/api/bookmarks`);
+        const res = await fetch('/api/properties');
 
         if (res.status === 200) {
           const data = await res.json();
           setProperties(data);
-        } else {
-          console.log(res.statusTest);
-          toast.error('Failed to fetch saved properties');
         }
       } catch (error) {
         console.log(error);
-        toast.error('Failed to fetch saved properties');
       } finally {
         setLoading(false);
       }
     };
-    fetchSavedProperties();
+
+    fetchProperties();
   }, []);
 
   return loading ? (
-    <Spinner loading={loading} />
+    <Spinner />
   ) : (
     <section className="px-4 py-6">
       <div className="container-xl lg:container m-auto px-4 py-6">
-        <h1 className="text-2xl mb-4">Saved Properties</h1>
         {properties.length === 0 ? (
-          <p>No saved properties</p>
+          <p>No properties found</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {properties.map((property) => (
@@ -51,4 +45,4 @@ const SavedPropertiesPage = () => {
   );
 };
 
-export default SavedPropertiesPage;
+export default Properties;
