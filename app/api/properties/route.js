@@ -8,9 +8,27 @@ export const GET = async (request) => {
   try {
     await connectDB();
 
-    const properties = await Property.find({});
+    // Pagination functionality
+    // First we read from URL on what page we are(page) and how much properties we want to display on that page(pageSize)
+    const page = request.nextUrl.searchParams.get('page') || 1;
+    const pageSize = request.nextUrl.searchParams.get('pageSize') || 3;
 
-    return new Response(JSON.stringify(properties), {
+    // This functionality is for skipping page (for example from 1 page to 3 page)
+    const skip = (page - 1) * pageSize;
+
+    // Total properties are all properties in database
+    const total = await Property.countDocuments({});
+    // Properties that will be displayed on page depends on skip and limit.
+    const properties = await Property.find({}).skip(skip).limit(pageSize);
+
+    // Creating object with total value and properties object
+    const result = {
+      total,
+      properties,
+    };
+
+    // Returning that whole result object
+    return new Response(JSON.stringify(result), {
       status: 200,
     });
   } catch (error) {
