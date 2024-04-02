@@ -18,6 +18,7 @@ const MainLayout = ({ children }) => {
     <GlobalProvider>
       <AuthProvider>
         <html lang="en">
+          <link rel="icon" href="data:," />
           <body>
             <Navbar />
             <main>{children}</main>

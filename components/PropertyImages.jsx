@@ -32,14 +32,16 @@ const PropertyImages = ({ images }) => {
                 <div
                   key={index}
                   className={`
-              ${
-                images.length === 3 && index === 2 ? 'col-span-2' : 'col-span-1'
-              }
-              `}
+                  ${
+                    images.length === 3 && index === 2
+                      ? 'col-span-2'
+                      : 'col-span-1'
+                  }
+                `}
                 >
                   <Item
                     original={image}
-                    thumbnail={images}
+                    thumbnail={image}
                     width="1000"
                     height="600"
                   >
@@ -66,5 +68,4 @@ const PropertyImages = ({ images }) => {
     </Gallery>
   );
 };
-
 export default PropertyImages;
