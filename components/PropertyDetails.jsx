@@ -59,21 +59,24 @@ const PropertyDetails = ({ property }) => {
         </div>
       </div>
 
-      <div className="bg-white p-6 rounded-lg shadow-md mt-6">
+      <div className="bg-white p-6 rounded-lg shadow-md mt-6 relative">
         <h3 className="text-lg font-bold mb-6">Description & Details</h3>
-        <div className="flex justify-center gap-4 text-blue-500 mb-4 text-xl space-x-9">
-          <p>
-            <FaBed className="inline-block mr-2" />
-            {property.beds} <span className="hidden sm:inline">Beds</span>
+
+        <div className="flex justify-center gap-4 text-blue-500 mb-4 text-base sm:text-xl space-x-1 sm:space-x-9">
+          <p className="inline-flex items-center">
+            <FaBed className="inline mr-2" />
+            <span className="mr-1">{property.beds}</span>{' '}
+            <span className="inline-block lg:inline">Beds</span>
           </p>
-          <p>
-            <FaBath className="inline-block mr-2" />
-            {property.baths} <span className="hidden sm:inline">Baths</span>
+          <p className="inline-flex items-center">
+            <FaBed className="inline mr-2" />
+            <span className="mr-1">{property.baths}</span>{' '}
+            <span className="inline-block lg:inline">Baths</span>
           </p>
-          <p>
-            <FaRulerCombined className="inline-block mr-2" />
-            {property.square_feet}{' '}
-            <span className="hidden sm:inline">sqft</span>
+          <p className="inline-flex items-center">
+            <FaBed className="inline mr-2" />
+            <span className="mr-1">{property.square_feet}</span>{' '}
+            <span className="inline-block lg:inline">sqft</span>
           </p>
         </div>
 
