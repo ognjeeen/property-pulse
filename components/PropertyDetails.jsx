@@ -69,12 +69,12 @@ const PropertyDetails = ({ property }) => {
             <span className="inline-block lg:inline">Beds</span>
           </p>
           <p className="inline-flex items-center">
-            <FaBed className="inline mr-2" />
+            <FaBath className="inline mr-2" />
             <span className="mr-1">{property.baths}</span>{' '}
             <span className="inline-block lg:inline">Baths</span>
           </p>
           <p className="inline-flex items-center">
-            <FaBed className="inline mr-2" />
+            <FaRulerCombined className="inline mr-2" />
             <span className="mr-1">{property.square_feet}</span>{' '}
             <span className="inline-block lg:inline">sqft</span>
           </p>
