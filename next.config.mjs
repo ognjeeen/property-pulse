@@ -22,7 +22,7 @@ const nextConfig = {
           { key: 'Access-Control-Allow-Credentials', value: 'true' },
           {
             key: 'Access-Control-Allow-Origin',
-            value: 'miki-oggy.online',
+            value: 'http://miki-oggy.online',
           },
           {
             key: 'Access-Control-Allow-Methods',
