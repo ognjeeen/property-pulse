@@ -1,5 +1,10 @@
 # Property Pulse
-This is the project I created along with the [Next 14 From Scratch Course](https://www.traversymedia.com/nextjs-from-scratch) by Traversy Media.
+This is the project I created along with the [Next 14 From Scratch Course](https://www.traversymedia.com/nextjs-from-scratch) by Traversy Media. 
+Since the project had some major errors when building the production version, in my version of Property Pulse those errors are fixed.
+
+
+You can view this project at [miki-oggy.online](https://miki-oggy.online/) since I hosted it on a private VPS, or you can visit it via [Vercel](https://property-pulse-jade.vercel.app/). 
+However, it is recommended to visit the app via [miki-oggy.online](https://miki-oggy.online/), as it is much, much faster compared to Vercel. 🙂
 
 > A web application to help you find your next rental property.
 
@@ -37,8 +42,6 @@ Property Pulse uses the following technologies:
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [Photoswipe](https://photoswipe.com/)
 - [Cloudinary](https://cloudinary.com/)
-- [Mapbox](https://www.mapbox.com/)
-- [React Map GL](https://visgl.github.io/react-map-gl/)
 - [React Spinners](https://www.npmjs.com/package/react-spinners)
 - [React Toastify](https://fkhadra.github.io/react-toastify/)
 - [React Share](https://www.npmjs.com/package/react-share)
